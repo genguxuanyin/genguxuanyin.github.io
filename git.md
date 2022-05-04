@@ -200,6 +200,9 @@ e. 查看所有分支
 ### 将分支与当前分支合并
 `git merge <分支>`
 
+### 将分支与当前分支合并，并压缩commit
+`git merge --squash <分支>`
+
 ### 放弃当前merge
 
 `git merge --abort`
