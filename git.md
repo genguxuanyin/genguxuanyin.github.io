@@ -37,7 +37,7 @@
 `git add <目录名|文件名>`
 
 ### 撤销上一次add
-`git reset HEAD`
+`git reset HEAD <目录名|文件名>`
 
 ### 指定目录或文件进行撤销add
 `git restore --staged <目录名|文件名>`
@@ -49,6 +49,22 @@
 或
 
 `git rm --cached <目录名|文件名>`
+
+## 版本回退
+
+### 回到上一个版本
+`git reset --hard HEAD^`
+### 回到上上一个版本
+`git reset --hard HEAD^^`
+### 回到指定hash的版本
+`git reset --hard HEAD [hash]`
+
+## 回到旧版本
+> 和版本回退的区别：回到旧版本 会保留已有的版本
+
+`git checkout [hash] -- <目录名|文件名>`
+### 回退所有的文件
+`git checkout [hash] -- *`
 
 ### 提交暂存区内容
 `git commit -m "<注释>"`
