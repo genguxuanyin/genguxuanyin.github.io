@@ -21,6 +21,9 @@
 ### 查询git使用者名称
 `git config --global user.name`
 
+### 查询git config
+`git config --list`
+
 ## 基础操作
 
 ### 在指定目录创建仓库，如果没有指定目录名将在当前目录创建仓库
@@ -37,7 +40,15 @@
 `git reset HEAD`
 
 ### 指定目录或文件进行撤销add
+`git restore --staged <目录名|文件名>`
+
+或
+
 `git reset HEAD <目录名|文件名>`
+
+或
+
+`git rm --cached <目录名|文件名>`
 
 ### 提交暂存区内容
 `git commit -m "<注释>"`
@@ -64,6 +75,8 @@
 
 ### 比对当前内容和最近一次提交
 `git diff HEAD`
+或
+`git diff --staged`
 
 ### 比对当前内容和倒数第二次提交
 `git diff HEAD^`
@@ -84,6 +97,29 @@
 
 ### 打印示意图（忽略HEAD的位置）
 `git log --graph`
+
+
+## stash
+### 保存当前未commit的代码
+`git stash`
+
+### 保存当前未commit的代码并添加备注
+`git stash save "备注的内容"`
+
+### 列出stash的所有记录
+`git stash list`
+
+### 删除stash的所有记录
+`git stash clear`
+
+### 应用最近一次的stash
+`git stash apply`
+
+### 应用最近一次的stash，随后删除该记录
+`git stash pop`
+
+### 删除最近的一次stash
+`git stash drop`
 
 ## 分支 branch
 ### 有分支：创建分支，无分支：列出所有本地的分支
@@ -141,8 +177,16 @@ d.把修改后的本地分支与远程分支关联
 
 `git branch --set-upstream-to origin/newName`
 
+e. 查看所有分支
+
+`git branch -a`
+
 ### 将分支与当前分支合并
 `git merge <分支>`
+
+### 放弃当前merge
+
+`git merge --abort`
 
 ## Tag
 ### 添加tag
@@ -157,19 +201,48 @@ d.把修改后的本地分支与远程分支关联
 ### 回到tag所在
 `git checkout [tagName]`
 
+### 推送tags
+`git push --tags`
+
 ## 远程
 
 ### 拉取远程仓库
 `git pull`
 
+`git fetch & git merge`
+
 ### 推送至远程仓库
 `git push -u <远程仓库> <分支>`
+
+### 查看远程仓库origin
+`git remote -v`
 
 ### 新增远程仓库origin
 `git remote add origin https://xxx.git`
 
 ### 修改远程仓库origin
 `git remote set-url origin https://xxx.git`
+
+
+## 设置 Git 短命令
+
+方式一
+
+`git config --global alias.ps push`
+
+方式二
+
+`vim ~/.gitconfig`
+
+写入
+```
+[alias] 
+        co = checkout
+        ps = push
+        pl = pull
+        mer = merge --no-ff
+        cp = cherry-pick
+```
 
 ![一图胜千言](https://cdn.biaoyansu.com/TQDj8Uo1pj3YkMSoeSitYC1QB4a019V68N6GZFBE.png)
 
